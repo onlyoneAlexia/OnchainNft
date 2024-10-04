@@ -2,8 +2,10 @@ const main = async () => {
     // Get 'OnChainNFT' contract
     const nftContractFactory = await hre.ethers.getContractFactory('OnChainNFT');
   
-    // Deploy contract
-    const nftContract = await nftContractFactory.deploy();
+    // Deploy contract with increased gas limit
+    const nftContract = await nftContractFactory.deploy({
+        gasLimit: 5000000 // Increase the gas limit
+    });
     await nftContract.deployed;
     console.log('✅ Contract deployed to:', nftContract.target);
   
